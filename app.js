@@ -9,7 +9,8 @@ function ocultarError() {
 }
 
 function borraIngrediente(id) {
-    $("#" + id).hide(400, function() {
+    let aux_id = "#" + id;
+    $(aux_id).hide(400, function() {
         $(this).remove();
     });
 }
@@ -28,7 +29,7 @@ function agregaReceta(receta) {
             <h4 class="card-title">${receta.nombre}</h4>
         </div>
         <div class="card-footer text-center">
-            <button class="btn btn-outline-info" onclick="muestraModal(${receta.id})">Ver más</button>
+            <button class="btn btn-outline-info" onclick="muestraModal('${receta.id}')">Ver más</button>
         </div>
         <div class="d-none info_extra">
             <ul>${html_lista}</ul>
@@ -99,7 +100,7 @@ $(document).ready(function() {
         let ingredientes = [];
         for(let i = 0; i < lista.length; i++) {
             ingredientes.push(lista[i].textContent);
-        };
+        }
 
         let preparacion = $("#receta_preparacion").val();
         if (preparacion.trim() === "") {
@@ -134,7 +135,7 @@ $(document).ready(function() {
 
         let html = 
         `<li class="list-group-item" id="${id}">
-            <button class="btn btn-sm btn-outline-danger" type="button" onclick="borraIngrediente(${id})">&times;</button>
+            <button class="btn btn-sm btn-outline-danger" type="button" onclick="borraIngrediente('${id}')">&times;</button>
             <span class="pl-2">${ingrediente}</span>
         </li>`;
 
